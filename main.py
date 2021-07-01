@@ -14,17 +14,17 @@ def f(x):
 def baseline_model():
     model = Sequential()
     # Hidden - Layers
-    model.add(Dense(50, input_dim=1, activation='tanh', init='he_normal'))
-    model.add(Dense(50, input_dim=50, activation='tanh', init='he_normal'))
+    model.add(Dense(70, input_dim=1, activation='tanh', init='he_normal'))
+    model.add(Dense(70, input_dim=70, activation='tanh', init='he_normal'))
     # Output- Layer
-    model.add(Dense(1, input_dim=50, activation='linear', init='he_normal'))
+    model.add(Dense(1, input_dim=70, activation='linear', init='he_normal'))
     sgd = SGD(lr=0.01, momentum=0.9, nesterov=True)
     model.compile(loss='mean_squared_error', optimizer=sgd)
     return model
 
 if __name__ == "__main__":
-    # накидываем тысячу точек от -3 до 3
-    x = np.linspace(-3, 3, 1000).reshape(-1, 1)
+    # накидываем тысячу точек от -4 до 4
+    x = np.linspace(-4, 4, 2000).reshape(-1, 1)
     f = np.vectorize(f)
     # вычисляем вектор значений функции
     y = f(x)
